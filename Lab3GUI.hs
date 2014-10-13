@@ -7,9 +7,16 @@ import Graphics.UI.Threepenny.Core
 import Control.Monad
 import Lab3Help as L3
 
+-- | The cost of a path, expressed in minutes.
 type Cost = Int
+
+-- | The name of a tram/bus stop.
 type Name = String
-type ShortestPath g = (g -> Name -> Name -> Maybe ([Name], Cost))
+
+-- | A function to calculate the shortest path between two stops in a graph
+--   of type g. Returns the list of stops making up that path and the total
+--   cost of the path. Must return Nothing if no path could be found.
+type ShortestPath g = g -> Name -> Name -> Maybe ([Name], Cost)
 
 -- | Get the proper color for the given tram line.
 --   Non-trams are a stylish shade of pink.
