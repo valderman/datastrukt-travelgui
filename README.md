@@ -1,5 +1,5 @@
 This is the Haskell GUI for the travel planner lab of the Chalmers course
-DAT036 Data structures.
+DAT037 Data structures.
 
 Installation
 ------------
