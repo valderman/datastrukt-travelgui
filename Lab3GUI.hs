@@ -6,7 +6,6 @@ import qualified Data.Map as M
 import Graphics.UI.Threepenny.Core
 import Control.Monad
 import Lab3Help as L3
-import Text.JSON.Types (JSValue (..))
 
 type Cost = Int
 type Name = String
