@@ -217,11 +217,35 @@ c2s (RGB r g b) =
 c2s (RGBA r g b a) =
   concat ["rgba(", show r, ",", show g, ",", show b, ",", show a, ")"]
 
+instance Functor Picture where
+	fmap f p = Picture $ \ctx ->
+		unP p ctx >>= return . f
+
+instance Applicative Picture where
+	pure a = Picture $ \_ -> return a
+
+	pfab <*> pa = Picture $ \ctx -> do
+		fab <- unP pfab ctx
+		a   <- unP pa   ctx
+		return (fab a)
+
 instance Monad Picture where
   return x = Picture $ \_ -> return x
   Picture m >>= f = Picture $ \ctx -> do
     x <- m ctx
     unP (f x) ctx
+
+instance Functor Shape where
+	fmap f s = Shape $ \ctx ->
+		unS s ctx >>= return . f
+
+instance Applicative Shape where
+	pure a = Shape $ \_ -> return a
+
+	sfab <*> sa = Shape $ \ctx -> do
+		fab <- unS sfab ctx
+		a   <- unS sa   ctx
+		return (fab a)
 
 instance Monad Shape where
   return x = Shape $ \_ -> return x
