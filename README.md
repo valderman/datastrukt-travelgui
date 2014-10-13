@@ -7,7 +7,7 @@ Installation
 Save the files Lab3GUI.hs and Lab3Help.hs into your source code directory.
 Then install the threepenny-gui package by executing the following commands
 in a terminal. This should work on Mac, Windows and Linux, as long as you have
-the Haskell Platform installed.
+the [Haskell Platform](http://haskell.org/platform) installed.
 
     cabal update
     cabal install threepenny-gui
