@@ -10,7 +10,7 @@ in a terminal. This should work on Mac, Windows and Linux, as long as you have
 the Haskell Platform installed.
 
     cabal update
-    cabal install threepenny-gui
+    cabal install threepenny-gui json
 
 
 Usage
