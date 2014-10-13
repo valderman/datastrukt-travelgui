@@ -76,11 +76,10 @@ guiMain w bstops tramlines graph findpath = do
                    # UI.set UI.style [("display", "none")]
                    # UI.set UI.width 700
                    # UI.set UI.height 620
-  let htmlStops = map entities stopnames
 
   -- To/from list boxes
-  fromlist <- listBox "from" htmlStops
-  tolist <- listBox "to" htmlStops
+  fromlist <- listBox "from" stopnames
+  tolist <- listBox "to" stopnames
   fromTo <- UI.row [UI.string "From" # UI.set UI.style [("padding","0.5em")],
                     element fromlist,
                     UI.string "to" # UI.set UI.style [("padding","0.5em")],
@@ -108,7 +107,7 @@ guiMain w bstops tramlines graph findpath = do
           Just (p, c) -> do
             -- Path found; add all stops to path box and render.
             kids <- forM p $ \stop -> do
-              UI.p # UI.set UI.html (entities stop)
+              UI.p # UI.set UI.html stop
                    # UI.set UI.style [("padding", "0.1em"),
                                       ("margin", "0.1em")]
             UI.element stoplist # UI.set UI.children kids
@@ -163,20 +162,6 @@ listBox ident elems = do
                        # UI.set UI.value n
   UI.mkElement "select" # UI.set UI.children elems'
                         # UI.set UI.id_ ident
-
--- | Partial (that is, only scandinavian characters) implementation of HTML
---   entity conversion.
-entities :: String -> String
-entities = concatMap entity
-  where
-    entity 'å' = "&aring;"
-    entity 'ä' = "&auml;"
-    entity 'ö' = "&ouml;"
-    entity 'Å' = "&Aring;"
-    entity 'Ä' = "&Auml;"
-    entity 'Ö' = "&Ouml;"
-    entity c   = [c]
-
 
 -- Canvas stuff, since 3p's canvas facilities are sorely lacking.
 type Point = (Int, Int)
