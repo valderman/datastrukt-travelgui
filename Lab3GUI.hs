@@ -43,7 +43,7 @@ runGUI :: [BStop]  -- ^ A list of all list of nodes in the graph.
        -> IO ()
 runGUI bstops blines graph pathfun = do
   startGUI defaultConfig {
-      tpPort       = 8888
+      tpPort       = Just 8888
     } $ \s -> guiMain s bstops blines graph pathfun
 
 guiMain :: Window -> [BStop] -> [BLineTable] -> g -> ShortestPath g -> UI ()
