@@ -48,6 +48,15 @@ runGUI :: [BStop]  -- ^ A list of all list of nodes in the graph.
                    --   that path.
        -> IO ()
 runGUI bstops blines graph pathfun = do
+  -- Helpful message for those who are lost
+  putStrLn "\n\n"
+  putStrLn $ replicate 78 '='
+  putStrLn $ '|' : replicate 76 ' ' ++ "|"
+  putStrLn "| Point your browser to http://localhost:8888 to see your program in action! |"
+  putStrLn $ '|' : replicate 76 ' ' ++ "|"
+  putStrLn $ replicate 78 '='
+  putStrLn "\n\n"
+
   startGUI defaultConfig {
       tpPort       = Just 8888
     } $ \s -> guiMain s bstops blines graph pathfun
