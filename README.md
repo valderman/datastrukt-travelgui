@@ -43,3 +43,6 @@ Feel free to use this skeleton for your code:
       Right blines <- readLines "your-lines.txt"
       let graph = undefined -- Build your graph here using bstops and blines
       runGUI bstops blines graph shortestPath
+
+To try out your program, start it and point your web browser to
+[http://localhost:8888](http://localhost:8888).
