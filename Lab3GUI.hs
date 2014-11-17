@@ -1,6 +1,6 @@
 {-# OPTIONS_GHC -fno-warn-unused-do-bind #-}
 -- | Graphical interface for the path finding lab.
-module Lab3GUI (Name, Cost, runGUI) where
+module Lab3GUI (Name, Cost, ShortestPath, runGUI) where
 import qualified Graphics.UI.Threepenny as UI
 import qualified Data.Map as M
 import Graphics.UI.Threepenny.Core
